@@ -8,7 +8,7 @@ const image2 = document.querySelector("section img:nth-child(2)")
 const image3 = document.querySelector("section img:nth-child(3)")
 
 let clicks = 0
-const maxClicksAllowed = 3 // change this to 15 later
+const maxClicksAllowed = 3 // change this to 25 later
 
 let allProjects = [];
 
@@ -53,12 +53,15 @@ function projectClickedOn(event){
         alert("Please select a project you believe would be best to do next.")
     } else {
         if (clicks === maxClicksAllowed){
-            projectContainer.removeEventListener("click", projectClickedOn)
+            projectContainer.removeEventListener("click", projectClickedOn);
+            projectContainer.className = "no-voting";
+            resultsButton.addEventListener("click", renderResults);
+            resultsButton.className = "clicks-allowed"
         } else {
             renderProjects();
         }
         clicks++;
-        // console.log(clicks)
+        console.log(clicks)
         let clickedProject = event.target.alt;
         for (let i =0; i < allProjects.length; i++){
             if (clickedProject === allProjects[i].name){
@@ -99,6 +102,16 @@ const wineglass = new Project("wine-glass","images/wine-glass.jpg")
 // for (let i = 0; i < productNames.length; i++) {
 //     new Project(productNames[i], `imgs/${productNames[i]}.jpg`);
 // }
+
+function renderResults(){
+    console.log("Here are the results")
+    let ul = document.querySelector("ul")
+    for(let i = 0; i < allProjects.length; i++){
+        let li = document.createElement("li")
+        li.textContent = `${allProjects[i].name} had ${allProjects[i].clicks} votes, and was seen ${allProjects[i].views} times.`
+        ul.appendChild(li);
+    }
+}
 
 renderProjects()
 

@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: monospace;
+    background-color: rgb(220, 232, 248);
+    color: black;
+    margin-left: 3rem;
+}
+
+h1{
+    font-size: 3rem;
+    color: rgb(53, 73, 19);
+    padding: 1rem;
+}
+
+h2{
+    font-size: 2rem;
+    background-color: rgb(249, 201, 201);
+
+}
+
+main{
+    width: 95%;
+    margin: auto;
+    background-color: white;
+}
+
+main + section{
+    display: grid;
+    grid-template-columns: 3;
+}
+
+
+
+section{
+    background-color: wheat;
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+
+section img{
+    width: 460px;
+    max-height: 26rem;
+    border: 5px solid transparent;
+}
+
+section img:hover{
+    border: 5px solid green;
+}

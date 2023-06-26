@@ -52,14 +52,6 @@ function projectClickedOn(event){
     if (event.target === projectContainer){
         alert("Please select a project you believe would be best to do next.")
     } else {
-        if (clicks === maxClicksAllowed){
-            projectContainer.removeEventListener("click", projectClickedOn);
-            projectContainer.className = "no-voting";
-            resultsButton.addEventListener("click", renderResults);
-            resultsButton.className = "clicks-allowed"
-        } else {
-            renderProjects();
-        }
         clicks++;
         console.log(clicks)
         let clickedProject = event.target.alt;
@@ -70,12 +62,14 @@ function projectClickedOn(event){
             }
         }
     }
-    
-    // if (clicks === maxClicksAllowed){
-    //     projectContainer.removeEventListener("click", projectClickedOn)
-    // } else {
-    //     renderProjects();
-    // }
+    if (clicks === maxClicksAllowed){
+        projectContainer.removeEventListener("click", projectClickedOn);
+        projectContainer.className = "no-voting";
+        resultsButton.addEventListener("click", renderResults);
+        resultsButton.className = "clicks-allowed"
+    } else {
+    renderProjects();
+    }
 }
 
 const bag = new Project("bag", "images/bag.jpg")

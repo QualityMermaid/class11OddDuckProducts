@@ -96,11 +96,12 @@ section.no-voting img:hover{
 
 
 section + div{
+    
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding: .5rem 1rem;
-    background-color: rgb(104, 104, 104);
-    color: mintcream;
+    background-color: transparent;
+    color: transparent;
     border: none;
     border-radius: 6px;
     width: 5rem;
@@ -122,6 +123,7 @@ section + div.clicks-allowed{
     margin-left: -250px; 
     text-align: center;
     background-color: green;
+    color: black;
     cursor: pointer;
     pointer-events: auto;
     font-size: 6rem;
@@ -146,6 +148,7 @@ ul li{
 canvas{
     width: 75%;
     height: 500px;
+    padding: 1rem;
 }
 
 .noProjects{
@@ -155,4 +158,5 @@ canvas{
 
 section + div.resultsShown{
     display: none;
+    color: magenta;
 }

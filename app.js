@@ -155,15 +155,15 @@ function renderChat(){
             {
                 label: "views",
                 data: projectViews,
-                backgroundColor: ["#42032C"],
-                borderColor: ["#D36B00"],
+                backgroundColor: ["yellow"],
+                borderColor: ["green"],
                 borderWidth: 1,
             },
             {
                 label: "clicks",
                 data: projectClicks,
-                backgroundColor: ["#D36B00"],
-                borderColor: ["#42032C"],
+                backgroundColor: ["magenta"],
+                borderColor: ["green"],
                 borderWidth: 1,
             },
         ]

@@ -82,7 +82,8 @@ function projectClickedOn(event){
     if (clicks === maxClicksAllowed){
         projectContainer.removeEventListener("click", projectClickedOn);
         projectContainer.className = "no-voting";
-        resultsButton.addEventListener("click", renderResults);
+        // resultsButton.addEventListener("click", renderResults);
+        resultsButton.addEventListener("click", renderChat);
         resultsButton.className = "clicks-allowed"
     } else {
     renderProjects();
@@ -127,3 +128,42 @@ function renderResults(){
 renderProjects()
 
 projectContainer.addEventListener("click", projectClickedOn)
+
+function renderChat(){
+    const projectNames = [];
+    const projectViews = [];
+    const projectClicks = [];
+
+    for (let i = 0; i < allProjects.length; i++){
+        projectNames.push(allProjects[i].name)
+        projectViews.push(allProjects[i].views)
+        projectClicks.push(allProjects[i].clicks)
+    }
+
+    const data = {
+        labels: projectNames,
+        datasets: [
+            {
+                label: "views",
+                data: projectViews,
+                backgroundColor: ["#42032C"],
+                borderColor: ["#D36B00"],
+                borderWidth: 1,
+            },
+            {
+                label: "clicks",
+                data: projectClicks,
+                backgroundColor: ["#D36B00"],
+                borderColor: ["#42032C"],
+                borderWidth: 1,
+            },
+        ]
+    }
+    const config = {
+        type: "bar",
+        data: data,
+    };
+
+    const projectChart = document.getElementById("chart");
+    const resultChart = new Chart(projectChart,config)
+}

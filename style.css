@@ -126,3 +126,8 @@ ul li{
     font-size: 1rem;
     margin: 1rem;
 }
+
+canvas{
+    width: 75%;
+    height: 500px;
+}

@@ -106,10 +106,26 @@ section + div{
     width: 5rem;
 }
 
+div{
+    margin: auto;
+}
+
 section + div.clicks-allowed{
+    position: fixed;
+    width: 500px;
+    height: 130px;
+    padding: 10px;
+    border: 3px solid #147d43;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;  /* Negative half of height. */
+    margin-left: -250px; 
+    text-align: center;
     background-color: green;
     cursor: pointer;
     pointer-events: auto;
+    font-size: 6rem;
+
 }
 
 section + div.clicks-allowed:hover{
@@ -130,4 +146,13 @@ ul li{
 canvas{
     width: 75%;
     height: 500px;
+}
+
+.noProjects{
+    background-color: red;
+    filter: grayscale(1);
+}
+
+section + div.resultsShown{
+    display: none;
 }

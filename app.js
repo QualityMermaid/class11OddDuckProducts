@@ -87,6 +87,12 @@ function projectClickedOn(event){
         // resultsButton.addEventListener("click", renderResults);
         resultsButton.addEventListener("click", renderChat);
         resultsButton.className = "clicks-allowed"
+        image1.classList.add("noProjects")
+        image2.classList.add("noProjects")
+        image3.classList.add("noProjects")
+        
+
+
     } else {
     renderProjects();
     }
@@ -132,6 +138,7 @@ renderProjects()
 projectContainer.addEventListener("click", projectClickedOn)
 
 function renderChat(){
+    resultsButton.className = "resultsShown"
     const projectNames = [];
     const projectViews = [];
     const projectClicks = [];

@@ -6,6 +6,7 @@ const resultsButton = document.querySelector("section + div")
 const image1 = document.querySelector("section img:first-child")
 const image2 = document.querySelector("section img:nth-child(2)")
 const image3 = document.querySelector("section img:nth-child(3)")
+const audioDuck = new Audio("other/toy-ducks-quacking-82167.mp3")
 
 let clicks = 0
 const maxClicksAllowed = 5 // change this to 25 later
@@ -89,10 +90,7 @@ function projectClickedOn(event){
         resultsButton.className = "clicks-allowed"
         image1.classList.add("noProjects")
         image2.classList.add("noProjects")
-        image3.classList.add("noProjects")
-        
-
-
+        image3.classList.add("noProjects")        
     } else {
     renderProjects();
     }
@@ -139,6 +137,7 @@ projectContainer.addEventListener("click", projectClickedOn)
 
 function renderChat(){
     resultsButton.className = "resultsShown"
+    audioDuck.play();
     const projectNames = [];
     const projectViews = [];
     const projectClicks = [];
@@ -171,8 +170,36 @@ function renderChat(){
     const config = {
         type: "bar",
         data: data,
+    }; 
+    
+    
+    const data2 = {
+        labels: projectNames,
+        datasets: [
+            {
+                label: "views",
+                data: projectViews,
+                backgroundColor: ["yellow"],
+                borderColor: ["green"],
+                borderWidth: 1,
+            },
+            {
+                label: "clicks",
+                data: projectClicks,
+                backgroundColor: ["magenta"],
+                borderColor: ["green"],
+                borderWidth: 1,
+            },
+        ]
+    }
+
+    const config2 = {
+        type: "doughnut",
+        data: data,
     };
 
     const projectChart = document.getElementById("chart");
+    const projectChart2 = document.getElementById("chart2");
     const resultChart = new Chart(projectChart,config)
+    const resultChart2 = new Chart(projectChart2,config2)
 }

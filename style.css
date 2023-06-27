@@ -6,7 +6,7 @@ body{
     font-family: monospace;
     background-color: rgb(220, 232, 248);
     color: black;
-    margin-left: 3rem;
+    margin: 1rem;
 }
 
 header{
@@ -34,6 +34,8 @@ h1{
     color: rgb(53, 73, 19);
     margin: auto;
     font-weight: 700;
+    text-align: center;
+    margin: 1rem;
 }
 
 .oddDuckLogo{
@@ -51,17 +53,18 @@ h2{
 }
 
 main{
-    width: 95%;
-    margin: auto;
+    margin: 1rem;
     /* background-color: white; */
-    display: grid;
+    /* display: grid; */
 
 }
 
 main + section{
+    display: grid;
     grid-template-columns: 3;
     grid-row-start: 2;
     grid-row-end: 4;
+    
 }
 
 
@@ -73,6 +76,7 @@ section{
     align-items: flex-start;
     align-items: center;
     padding: 1rem;
+    margin: 1rem;
 }
 
 section img{
@@ -146,8 +150,8 @@ ul li{
 }
 
 canvas{
-    width: 75%;
-    height: 500px;
+    /* width: 75%; */
+    /* height: 500px; */
     padding: 1rem;
 }
 

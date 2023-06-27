@@ -8,7 +8,7 @@ const image2 = document.querySelector("section img:nth-child(2)")
 const image3 = document.querySelector("section img:nth-child(3)")
 
 let clicks = 0
-const maxClicksAllowed = 3 // change this to 25 later
+const maxClicksAllowed = 5 // change this to 25 later
 
 let allProjects = [];
 
@@ -27,14 +27,31 @@ function Project(name, src){
 
 function renderProjects(){
     let project1 = getRandomNumber();
+    let project1LastNum = project1;
     let project2 = getRandomNumber();
+    let project2LastNum = project2;
     let project3 = getRandomNumber();
+    let project3LastNum = project3;
+
+    console.log(project1 + " and " + project1LastNum)
 
     while (project1 === project2 || project1 === project3 || project2 === project3){
+        project1 = getRandomNumber();
         project2 = getRandomNumber();
         project3 = getRandomNumber();
-        console.log(`first is ${project1}, second is ${project2} and third is ${project3}`)
+        while(project1 === project1LastNum || project1 === project2LastNum || project1 === project3LastNum){
+            project1 = getRandomNumber()
+        }
+        while(project2 === project2LastNum || project2 === project2LastNum || project2 === project3LastNum){
+            project2 = getRandomNumber()
+        }        
+        while(project3 === project3LastNum || project3 === project2LastNum || project3 === project3LastNum){
+            project3 = getRandomNumber()
+        }
+
     }
+    console.log(`first is ${project1}, second is ${project2} and third is ${project3}`)
+
     image1.src = allProjects[project1].src
     image2.src = allProjects[project2].src
     image3.src = allProjects[project3].src

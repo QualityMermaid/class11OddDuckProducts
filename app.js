@@ -11,10 +11,14 @@ let clicks = 0
 const maxClicksAllowed = 5 // change this to 25 later
 
 let allProjects = [];
+let pastProjects = [];
+
 
 function getRandomNumber(){
-    return Math.floor(Math.random() * allProjects.length)
+    let x = Math.floor(Math.random() * allProjects.length)
+    return x
 }
+
 
 function Project(name, src){
     this.name = name;
@@ -27,28 +31,22 @@ function Project(name, src){
 
 function renderProjects(){
     let project1 = getRandomNumber();
-    let project1LastNum = project1;
     let project2 = getRandomNumber();
-    let project2LastNum = project2;
     let project3 = getRandomNumber();
-    let project3LastNum = project3;
 
-    console.log(project1 + " and " + project1LastNum)
+    console.log(project1, project2, project3)
+    console.log(pastProjects)
 
-    while (project1 === project2 || project1 === project3 || project2 === project3){
+    while (project1 === project2 || 
+        project1 === project3 || 
+        project2 === project3 ||
+        pastProjects.includes(project1) ||
+        pastProjects.includes(project2) ||
+        pastProjects.includes(project3)
+        ){
         project1 = getRandomNumber();
         project2 = getRandomNumber();
         project3 = getRandomNumber();
-        while(project1 === project1LastNum || project1 === project2LastNum || project1 === project3LastNum){
-            project1 = getRandomNumber()
-        }
-        while(project2 === project2LastNum || project2 === project2LastNum || project2 === project3LastNum){
-            project2 = getRandomNumber()
-        }        
-        while(project3 === project3LastNum || project3 === project2LastNum || project3 === project3LastNum){
-            project3 = getRandomNumber()
-        }
-
     }
     console.log(`first is ${project1}, second is ${project2} and third is ${project3}`)
 
@@ -61,8 +59,12 @@ function renderProjects(){
     allProjects[project1].views++
     allProjects[project2].views++
     allProjects[project3].views++
+    pastProjects = [];
+    pastProjects.push(project1, project2, project3)
+    console.log(pastProjects)
 
     console.log(`${allProjects[project1].views} while loop is working?`)
+    // console.log(pastProjects)
 }
 
 function projectClickedOn(event){

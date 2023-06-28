@@ -141,6 +141,9 @@ function renderChat(){
     const config = {
         type: "bar",
         data: data,
+        options: {
+            indexAxis:"y"
+        }
     }; 
     
     
@@ -148,26 +151,38 @@ function renderChat(){
         labels: projectNames,
         datasets: [
             {
-                label: "views",
-                data: projectViews,
-                backgroundColor: ["yellow"],
-                borderColor: ["green"],
-                borderWidth: 1,
-            },
-            {
                 label: "clicks",
                 data: projectClicks,
-                backgroundColor: ["magenta"],
+                backgroundColor: [
+                    "magenta", "pink","green", "yellow","darkmagenta","chartreuse","gold","darkkhaki","deeppink","darkseagreen"," #cc0099","lightgreen"," #d5ff80","lime","yellowgreen","violet","springgreen","seagreen"," #ffff66"],
+                hoverOffset: 20,
                 borderColor: ["green"],
-                borderWidth: 1,
+                cutout: 200,
+                borderWidth: 2,
             },
         ]
     }
 
     const config2 = {
         type: "doughnut",
-        data: data,
+        data: data2,
     };
+
+    // create 2 canvas charts in section 2
+    const chartContainer = document.querySelector("section2")
+    const divChart = document.createElement("div")
+    divChart.classList.add("charts");
+    // divChart.style.add("position: relative")
+    chartContainer.appendChild(divChart)
+
+    const canvas1 = document.createElement("canvas")
+    canvas1.setAttribute("id", "chart")
+    divChart.appendChild(canvas1)
+
+    const canvas2 = document.createElement("canvas")
+    canvas2.setAttribute("id", "chart2")
+    divChart.appendChild(canvas2)
+
 
     const projectChart = document.getElementById("chart");
     const projectChart2 = document.getElementById("chart2");

@@ -13,6 +13,7 @@ const maxClicksAllowed = 5 // change this to 25 later
 
 let allProjects = [];
 let pastProjects = [];
+let currentVotes = [];
 
 
 function getRandomNumber(){
@@ -27,6 +28,7 @@ function Project(name, src){
     this.clicks = 0;
     this.views = 0;
     allProjects.push(this);
+    saveAllProducts();
     // console.log(allProjects)
 }
 
@@ -66,6 +68,7 @@ function renderProjects(){
 
     console.log(`${allProjects[project1].views} while loop is working?`)
     // console.log(pastProjects)
+    savePrevProducts()
 }
 
 function projectClickedOn(event){
@@ -90,7 +93,8 @@ function projectClickedOn(event){
         resultsButton.className = "clicks-allowed"
         image1.classList.add("noProjects")
         image2.classList.add("noProjects")
-        image3.classList.add("noProjects")        
+        image3.classList.add("noProjects")  
+        // saveVotes()    
     } else {
     renderProjects();
     }
@@ -146,8 +150,9 @@ function renderChat(){
         projectNames.push(allProjects[i].name)
         projectViews.push(allProjects[i].views)
         projectClicks.push(allProjects[i].clicks)
+        currentVotes.push(allProjects[i].clicks)
     }
-
+    saveVotes()
     const data = {
         labels: projectNames,
         datasets: [
@@ -200,6 +205,79 @@ function renderChat(){
 
     const projectChart = document.getElementById("chart");
     const projectChart2 = document.getElementById("chart2");
+
     const resultChart = new Chart(projectChart,config)
     const resultChart2 = new Chart(projectChart2,config2)
 }
+
+
+function saveAllProducts(){
+    let allProductsArray = JSON.stringify(allProjects)
+    localStorage.setItem("allProducts", allProductsArray)
+
+}
+
+function savePrevProducts(){
+    let previousProducts = JSON.stringify(pastProjects)
+    localStorage.setItem("prevProjects", previousProducts)
+    // console.log("This is local stored as strings" + allProductsArray + previousProducts)
+}
+
+function saveVotes(){
+    let prevVotes = JSON.stringify(currentVotes)
+    localStorage.setItem("currentVotes", prevVotes)
+    console.log(prevVotes + "HERE")
+}
+
+function pageLoad(){
+    let storedAllProjects = JSON.parse(localStorage.getItem("allProducts"))
+    let storedPrevProjects = JSON.parse(localStorage.getItem("prevProjects"))
+    let storedPrevVotes = JSON.parse(localStorage.getItem("currentVotes"))
+    console.log("This is locally stored " + storedAllProjects + " and this " + storedPrevProjects)
+    console.log("prev results " + storedPrevVotes)
+
+    if (storedAllProjects === null){
+        console.log("null")
+        // return
+    } else {
+        console.log("there is data stored for all projects!!!")
+
+    }    
+    
+    if (storedPrevProjects.length === 0 || null){
+        console.log(typeof(storedPrevProjects))
+        console.log("null again")
+        // return
+    } else {
+        console.log("there is data stored for prev projects!!!")
+        console.log(storedPrevProjects)
+
+    }
+
+    if (storedPrevVotes === null){
+        console.log("No votes yet")
+    } else {
+        // console.log("these are the current votes" + storedPrevVotes)
+        for (let i = 0; i < storedPrevVotes.length; i++){
+
+            // newNum = storedPrevVotes
+        }
+        
+        // currentVotes = storedPrevVotes
+        console.log("these are the current votes" + storedPrevVotes)
+
+        // for(let i = 0; i < storedPrevVotes.length; i++){
+        //     currentVotes[i] = currentVotes[i] + storedPrevVotes[i].
+        //     console.log(currentVotes)
+        // }
+    }
+}
+
+// saveAllProducts()
+pageLoad()
+
+// localStorage.removeItem("allProducts")
+// localStorage.removeItem("prevProjects")
+// localStorage.removeItem("currentVotes")
+
+

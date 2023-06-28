@@ -80,11 +80,13 @@ section{
 }
 
 section img{
-    width: 30%;
+    width: 90%;
     max-height: 26rem;
+    /* height: auto; */
     border: 5px solid transparent;
 
 }
+
 
 section img:hover{
     border: 5px solid green;
@@ -142,6 +144,7 @@ ul{
     margin: 1rem;
     background-color: white;
     width: auto;
+    height: auto;
 }
 
 ul li{
